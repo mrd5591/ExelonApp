@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExelonApp.SignIn">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="EmailInput"
+                   Placeholder="Email"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="PasswordInput"
+                   Placeholder="Password"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Button x:Name="SubmitButton"
+                    Text="Submit"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="SubmitButton_Clicked"/>
+            <Label x:Name="ConfirmLabel"
+                   Text="This works"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   IsVisible="false"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
