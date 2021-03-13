@@ -4,9 +4,35 @@
              x:Class="ExelonApp.SignUp">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="First Name"
+                   Placeholder="Enter your first name"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="Last Name"
+                   Placeholder="Enter your last name"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="ExelonID"
+                   Placeholder="Enter your Exelon ID"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="BackUpEmail"
+                   Placeholder="Enter your preferred back up email"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="Password"
+                   Placeholder="Enter your password"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="ConfirmPassword"
+                   Placeholder="Enter your password again"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Button x:Name="SubmitButton"
+                   Text="Submit"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Clicked="SubmitButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

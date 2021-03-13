@@ -26,7 +26,6 @@ namespace ExelonApp
                 return;
 
             //validate whatever and send to server
-            for ()
             ConfirmLabel.IsVisible = true;
         }
     }
