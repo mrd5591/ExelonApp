@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace ExelonApp
 {
@@ -51,37 +54,79 @@ namespace ExelonApp
                 identicalPassword.IsVisible = true;
             }
 
+            SignUpInfo myConnection = new SignUpInfo();
+            myConnection.exelonId = exelonID;
+            myConnection.email = backUpEmail;
+            myConnection.firstName = firstName;
+            myConnection.lastName = lastName;
+            myConnection.password = password;
+            
+            string jsonString = JsonConvert.SerializeObject(myConnection);
 
-            string constr = "server=virmire.database.windows.net; uid=VirmireAdmin; password=GrandHat132; initial catalog=TestingDB";
+            string jsonResult = Post(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
 
-            using (SqlConnection myConnection = new SqlConnection(constr))
+            JObject rss = JObject.Parse(jsonResult);
+
+            string error = (string)rss["error"];
+
+            if (error.Equals("true"))
             {
-                string oString = "Select * from User where exelonID=@exelonID";
-                SqlCommand oCmd = new SqlCommand(oString, myConnection);
-                oCmd.Parameters.AddWithValue("@exelonID", exelonID);
-                myConnection.Open();
-                using (SqlDataReader oReader = oCmd.ExecuteReader())
-                {
-                    if (oReader.Read())
-                    {
-                        checkID.IsVisible = true;
-                    }
-                    else
-                    {
-                        string newString = "Insert into User (firstName, lastName, exelonID, backUpEmail, password) " +
-                            "Values (@firstName, @lastName, @exelonID, @backUpEmail, @password)";
-                        SqlCommand newCmd = new SqlCommand(newString, myConnection);
-                        newCmd.Parameters.AddWithValue("@firstName", firstName);
-                        newCmd.Parameters.AddWithValue("@lastName", lastName);
-                        newCmd.Parameters.AddWithValue("@exelonID", exelonID);
-                        newCmd.Parameters.AddWithValue("@backUpEmail", backUpEmail);
-                        newCmd.Parameters.AddWithValue("@password", password);
-                        newCmd.ExecuteNonQuery();
-                    }
-
-                    myConnection.Close();
-                }
+                string errorMessage = (string)rss["errorMessage"];
             }
+
+            else
+            {
+                //Guide to sign in page
+            }
+
+            //string constr = "server=exelon.database.windows.net; uid=YCadmin; password=cky5103@; initial catalog=TestingDB";
+
+            //using (SqlConnection myConnection = new SqlConnection(constr))
+            //{
+            //    string oString = "Select * from User where exelonID=@exelonID";
+            //    SqlCommand oCmd = new SqlCommand(oString, myConnection);
+            //    oCmd.Parameters.AddWithValue("@exelonID", exelonID);
+            //    myConnection.Open();
+            //    using (SqlDataReader oReader = oCmd.ExecuteReader())
+            //    {
+            //        if (oReader.Read())
+            //        {
+            //            checkID.IsVisible = true;
+            //        }
+            //        else
+            //        {
+            //            string newString = "Insert into User (firstName, lastName, exelonID, backUpEmail, password) " +
+            //                "Values (@firstName, @lastName, @exelonID, @backUpEmail, @password)";
+            //            SqlCommand newCmd = new SqlCommand(newString, myConnection);
+            //            newCmd.Parameters.AddWithValue("@firstName", firstName);
+            //            newCmd.Parameters.AddWithValue("@lastName", lastName);
+            //            newCmd.Parameters.AddWithValue("@exelonID", exelonID);
+            //            newCmd.Parameters.AddWithValue("@backUpEmail", backUpEmail);
+            //            newCmd.Parameters.AddWithValue("@password", password);
+            //            newCmd.ExecuteNonQuery();
+            //        }
+
+            //        myConnection.Close();
+            //}
+
+        }
+
+        public static string Post(Uri url, string json)
+        {
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpClient client = new HttpClient();
+
+            string jsonResult = client.PostAsync(url, content).Result.Content.ReadAsStringAsync().Result;
+            return jsonResult;
+        }
+
+        public static string Put(Uri url, string json)
+        {
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpClient client = new HttpClient();
+
+            string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
+            return jsonResult;
         }
     }
 }
