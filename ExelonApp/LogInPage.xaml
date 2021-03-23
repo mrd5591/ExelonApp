@@ -16,7 +16,7 @@
             <Button x:Name="SubmitButton"
                     Text="Submit"
                     HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
