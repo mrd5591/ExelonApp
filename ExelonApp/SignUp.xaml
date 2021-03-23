@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExelonApp.SignUp">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="5">
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="FirstName"
+                       Placeholder="First Name"/>
+                <Entry x:Name="LastName"
+                       Placeholder="Last Name"/>
+            </StackLayout>
+            <Label x:Name="checkID"
+                   Text="This ID has been registered."
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Red"
+                   IsVisible="false"/>
+            <Entry x:Name="ExelonID"
+                   Placeholder="Enter your Exelon ID"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="validEmail"
+                   Text="This is not a valid email address."
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Red"
+                   IsVisible="false"/>
+            <Entry x:Name="BackUpEmail"
+                   Placeholder="Enter your preferred back up email"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Entry x:Name="Password"
+                   Placeholder="Enter your password"
+                   IsPassword="True"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="validPassword"
+                   Text="This is not a valid password"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Red"
+                   IsVisible="false"/>
+            <Entry x:Name="ConfirmPassword"
+                   Placeholder="Enter your password again"
+                   IsPassword="True"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="identicalPassword"
+                   Text="Password entries are not matching each other"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="Red"
+                   IsVisible="false"/>
+            <Button x:Name="SubmitButton"
+                   Text="Sign UP"
+                   HorizontalOptions="CenterAndExpand"
+                   Clicked="SubmitButton_Clicked"/>
+            <Label Text="Already have an account? Sign In"
+                   TextColor="Blue"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

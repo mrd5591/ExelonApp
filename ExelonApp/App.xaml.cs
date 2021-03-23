@@ -10,19 +10,22 @@ namespace ExelonApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LogInPage();
         }
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
         {
+
         }
 
         protected override void OnResume()
         {
+
         }
     }
 }

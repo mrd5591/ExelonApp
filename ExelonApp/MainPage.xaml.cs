@@ -13,6 +13,8 @@ namespace ExelonApp
         public MainPage()
         {
             InitializeComponent();
+
+            Label1.Text = "Test";
         }
     }
 }

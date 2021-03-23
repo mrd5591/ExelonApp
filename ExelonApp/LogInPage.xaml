@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExelonApp.LogInPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="ExelonID"
+                   Placeholder="ExelonID"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Entry x:Name="Password"
+                   Placeholder="Password"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <Button x:Name="SubmitButton"
+                    Text="Submit"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="SubmitButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
