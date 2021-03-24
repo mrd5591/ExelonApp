@@ -23,8 +23,8 @@ namespace ExelonApp
             string exelonID = ExelonID.Text.Trim();
             string password = Password.Text.Trim();
 
-            SignUpInfo myConnection = new SignUpInfo();
-            myConnection.exelonId = exelonID;
+            LogInInfo myConnection = new LogInInfo();
+            myConnection.exelonID = exelonID;
             myConnection.password = password;
 
             string jsonString = JsonConvert.SerializeObject(myConnection);
