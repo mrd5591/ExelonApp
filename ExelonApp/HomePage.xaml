@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExelonApp.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="logOut"
+                    Text="Log Out here"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"/>
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>History</x:String>
+                        <x:String>firstRow</x:String>
+                        <x:String>secondRow</x:String>
+                        <x:String>thirdRow</x:String>
+                        <x:String>fourthRow</x:String>
+                        <x:String>fifthRow</x:String>
+                        <x:String>sixthRow</x:String>
+                        <x:String>seventhRow</x:String>
+                        <x:String>eightthRow</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -35,7 +35,7 @@ namespace ExelonApp
             {
                 validEmail.IsVisible = true;
             }
-
+            
             bool startWithLetter = Char.IsLetter(password[0]);
             var containNumber = new Regex(@"[0-9]+");
             var containUpperCase = new Regex(@"[A-Z]+");
@@ -48,36 +48,40 @@ namespace ExelonApp
             {
                 validPassword.IsVisible = true;
             }
-
-            if (String.Equals(password, confirmPassword))
+            
+            if (String.Equals(password, confirmPassword) == false)
             {
                 identicalPassword.IsVisible = true;
             }
 
-            SignUpInfo myConnection = new SignUpInfo();
-            myConnection.exelonId = exelonID;
-            myConnection.email = backUpEmail;
-            myConnection.firstName = firstName;
-            myConnection.lastName = lastName;
-            myConnection.password = password;
+            if ((emailFormat.IsMatch(backUpEmail) == true) && (passwordFormat.Equals(true)))
+            {
+                SignUpInfo myConnection = new SignUpInfo();
+                myConnection.exelonId = exelonID;
+                myConnection.email = backUpEmail;
+                myConnection.firstName = firstName;
+                myConnection.lastName = lastName;
+                myConnection.password = password;
+
+                string jsonString = JsonConvert.SerializeObject(myConnection);
+
+                string jsonResult = Post(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
+
+                JObject rss = JObject.Parse(jsonResult);
+
+                string error = (string)rss["error"];
+
+                if (error.Equals("true"))
+                {
+                    string errorMessage = (string)rss["errorMessage"];
+                }
+
+                else
+                {
+                    //Guide to sign in page
+                }
+            }
             
-            string jsonString = JsonConvert.SerializeObject(myConnection);
-
-            string jsonResult = Post(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
-
-            JObject rss = JObject.Parse(jsonResult);
-
-            string error = (string)rss["error"];
-
-            if (error.Equals("true"))
-            {
-                string errorMessage = (string)rss["errorMessage"];
-            }
-
-            else
-            {
-                //Guide to sign in page
-            }
 
             //string constr = "server=exelon.database.windows.net; uid=YCadmin; password=cky5103@; initial catalog=TestingDB";
 
