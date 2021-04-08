@@ -10,7 +10,7 @@ namespace ExelonApp
         {
             InitializeComponent();
 
-            MainPage = new LoginInPage();
+            MainPage = new HomePage();
         }
 
         protected override void OnStart()

@@ -18,6 +18,7 @@
             <Entry x:Name="Password"
                    Grid.Row="2"
                    Placeholder="Password"
+                   IsPassword="True"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"/>
             <Button x:Name="SubmitButton"
