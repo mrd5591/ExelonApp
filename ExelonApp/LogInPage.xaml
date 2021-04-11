@@ -10,21 +10,21 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-            <Entry x:Name="ExelonID"
-                   Grid.Row ="1"
-                   Placeholder="ExelonID"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"/>
-            <Entry x:Name="Password"
-                   Grid.Row="2"
-                   Placeholder="Password"
-                   IsPassword="True"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"/>
-            <Button x:Name="SubmitButton"
-                    Grid.Row="3"
-                    Text="Submit"
-                    HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-        </Grid>
+        <Entry x:Name="ExelonID"
+               Grid.Row ="1"
+               Placeholder="ExelonID"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+        <Entry x:Name="Password"
+               Grid.Row="2"
+               Placeholder="Password"
+               IsPassword="True"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+        <Button x:Name="SubmitButton"
+                Grid.Row="3"
+                Text="Submit"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
+    </Grid>
 </ContentPage>

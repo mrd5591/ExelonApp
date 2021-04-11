@@ -6,9 +6,7 @@ namespace ExelonApp
 {
     class LogInInfo
     {
-        public string exelonId
-    { get; set; }
-    public string password
-    { get; set; }
-}
+        public string exelonID { get; set; }
+        public string password{ get; set; }
+    }
 }
