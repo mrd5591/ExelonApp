@@ -12,9 +12,12 @@ namespace ExelonApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        HomepageModel hm;
         public HomePage()
         {
             InitializeComponent();
+            hm = new HomepageModel();
+            homepage.ItemsSource = hm.Histories;
         }
     }
 }

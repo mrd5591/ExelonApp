@@ -39,6 +39,12 @@ namespace ExelonApp
             {
                 string errorMessage = (string)rss["errorMessage"];
             }
+            else
+            {
+                //Move over to Homepage
+                //Then
+                App.userID = exelonID;
+            }
         }
 
         public static string Post(Uri url, string json)

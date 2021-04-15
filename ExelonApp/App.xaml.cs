@@ -6,6 +6,7 @@ namespace ExelonApp
 {
     public partial class App : Application
     {
+        public static string userID { get; set; }
         public App()
         {
             InitializeComponent();
