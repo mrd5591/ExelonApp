@@ -19,5 +19,11 @@ namespace ExelonApp
             hm = new HomepageModel();
             homepage.ItemsSource = hm.Histories;
         }
+
+        private async void LogOutButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LogInPage());
+
+        }
     }
 }

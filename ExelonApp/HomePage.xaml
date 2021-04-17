@@ -5,7 +5,14 @@
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="10">
             <Label Text="Notification History" FontSize="34" />
-            <Button Text="Refresh"
+            <Button x:Name="LogOutButton"
+                    Text="Log Out"
+                    Clicked="LogOutButton_Clicked"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"/>
+            <Button x:Name="Refresh"
+                    BackgroundColor="NavajoWhite"
+                    Text="Refresh" 
                     HorizontalOptions="Start"
                     VerticalOptions="Start"/>
             <ListView x:Name="homepage">
