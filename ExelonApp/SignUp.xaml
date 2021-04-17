@@ -12,12 +12,12 @@
         <Entry x:Name="FirstName"
                Grid.Row="0"
                Placeholder ="First Name"
-               HorizontalOptions ="CenterAndExpand"
+               HorizontalOptions ="Fill"
                VerticalOptions = "CenterAndExpand"/>
         <Entry x:Name ="LastName"
                Grid.Row="1"
                Placeholder = "Last Name"
-               HorizontalOptions="CenterAndExpand"
+               HorizontalOptions="Fill"
                VerticalOptions="CenterAndExpand"/>
         <Label x:Name ="checkID"
                Grid.Row ="2" 
@@ -28,7 +28,7 @@
         <Entry x:Name="ExelonID"
                Grid.Row="2"
                Placeholder="Enter your Exelon ID"
-               HorizontalOptions="CenterAndExpand"/>
+               HorizontalOptions="Fill"/>
         <Label x:Name="validEmail"
                Grid.Row="3"
                Text="This is not a valid email address."
@@ -38,12 +38,12 @@
         <Entry x:Name="BackUpEmail"
                Grid.Row="3"
                Placeholder="Enter your preferred back up email"
-               HorizontalOptions="CenterAndExpand"/>
+               HorizontalOptions="Fill"/>
         <Entry x:Name="Password"
                Grid.Row="4"
                Placeholder="Enter your password"
                IsPassword="True"
-               HorizontalOptions="CenterAndExpand"/>
+               HorizontalOptions="Fill"/>
         <Label x:Name="validPassword"
                Grid.Row="4"
                Text="This is not a valid password"
@@ -54,7 +54,7 @@
                Grid.Row="5"
                Placeholder="Enter your password again"
                IsPassword="True"
-               HorizontalOptions="CenterAndExpand"/>
+               HorizontalOptions="Fill"/>
         <Label x:Name="identicalPassword"
                Grid.Row="5"
                Text="Password entries are not matching each other"
@@ -66,9 +66,11 @@
                 Text="Sign UP"
                 HorizontalOptions="CenterAndExpand"
                 Clicked="SubmitButton_Clicked"/>
-        <Label Text="Already have an account? Sign In"
-               Grid.Row="7"
-               TextColor="Blue"/>
+        <Button x:Name="SwitchToSignIn"
+                Text="Already have an account? Sign in here."
+                Clicked="SwitchToSignIn_Clicked"
+                HorizontalOptions="End"
+                VerticalOptions="End"/>
 
 
     </Grid>

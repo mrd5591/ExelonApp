@@ -18,7 +18,7 @@ namespace ExelonApp
         {
             InitializeComponent();
         }
-        private void SubmitButton_Clicked(object sender, EventArgs args)
+        private async void SubmitButton_Clicked(object sender, EventArgs args)
         {
             string exelonID = ExelonID.Text.Trim();
             string password = Password.Text.Trim();
@@ -41,9 +41,8 @@ namespace ExelonApp
             }
             else
             {
-                //Move over to Homepage
-                //Then
                 App.userID = exelonID;
+                await Navigation.PushAsync(new HomePage());
             }
         }
 
@@ -63,6 +62,11 @@ namespace ExelonApp
 
             string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
             return jsonResult;
+        }
+
+        private async void SwitchToSignUp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SignUp());
         }
     }
 }

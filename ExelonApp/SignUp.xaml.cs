@@ -21,7 +21,7 @@ namespace ExelonApp
         {
             InitializeComponent();
         }
-        private void SubmitButton_Clicked(object sender, EventArgs args)
+        private async void SubmitButton_Clicked(object sender, EventArgs args)
         {
             string firstName = FirstName.Text.Trim();
             string lastName = LastName.Text.Trim();
@@ -78,7 +78,7 @@ namespace ExelonApp
 
                 else
                 {
-                    //Guide to sign in page
+                    await Navigation.PushAsync(new LogInPage());
                 }
             }
             
@@ -131,6 +131,11 @@ namespace ExelonApp
 
             string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
             return jsonResult;
+        }
+
+        private async void SwitchToSignIn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LogInPage());
         }
     }
 }

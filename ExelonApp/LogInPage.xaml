@@ -26,5 +26,10 @@
                 Text="Submit"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
+        <Button x:Name="SwitchToSignUp"
+                Text="Have nor registered? Sign up here."
+                Clicked="SwitchToSignUp_Clicked"
+                HorizontalOptions="End"
+                VerticalOptions="End"/>
     </Grid>
 </ContentPage>
