@@ -24,5 +24,11 @@ namespace ExelonApp
         {
             await Navigation.PushAsync(new LogInPage());
         }
+       private async void RefreshButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new HomePage());
+
+
+        }
     }
 }

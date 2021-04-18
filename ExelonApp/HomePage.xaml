@@ -12,7 +12,8 @@
                     VerticalOptions="End"/>
             <Button x:Name="Refresh"
                     BackgroundColor="NavajoWhite"
-                    Text="Refresh" 
+                    Text="Refresh"
+                    Clicked="RefreshButtonClicked"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"/>
             <ListView x:Name="homepage">
