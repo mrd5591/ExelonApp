@@ -8,6 +8,7 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ExelonApp.Util;
 
 namespace ExelonApp
 {
@@ -29,7 +30,9 @@ namespace ExelonApp
 
             string jsonString = JsonConvert.SerializeObject(myConnection);
 
-            string jsonResult = Post(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
+            //TODO Create util class
+            //TODO Create error handler 
+            string jsonResult = RESTClient.Post(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
 
             JObject rss = JObject.Parse(jsonResult);
 
@@ -43,25 +46,8 @@ namespace ExelonApp
             {
                 App.userID = exelonID;
                 await Navigation.PushAsync(new HomePage());
+                Navigation.RemovePage(Navigation.NavigationStack[0]);
             }
-        }
-
-        public static string Post(Uri url, string json)
-        {
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-
-            string jsonResult = client.PostAsync(url, content).Result.Content.ReadAsStringAsync().Result;
-            return jsonResult;
-        }
-
-        public static string Put(Uri url, string json)
-        {
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-
-            string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
-            return jsonResult;
         }
 
         private async void SwitchToSignUp_Clicked(object sender, EventArgs e)

@@ -79,6 +79,7 @@ namespace ExelonApp
                 else
                 {
                     await Navigation.PushAsync(new LogInPage());
+                    Navigation.RemovePage(Navigation.NavigationStack[0]);
                 }
             }
             
