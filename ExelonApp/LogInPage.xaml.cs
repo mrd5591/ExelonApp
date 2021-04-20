@@ -21,11 +21,11 @@ namespace ExelonApp
         }
         private async void SubmitButton_Clicked(object sender, EventArgs args)
         {
-            string exelonID = ExelonID.Text.Trim();
+            string exelonId = ExelonID.Text.Trim();
             string password = Password.Text.Trim();
 
             LogInInfo myConnection = new LogInInfo();
-            myConnection.exelonID = exelonID;
+            myConnection.exelonId = exelonId;
             myConnection.password = password;
             myConnection.os = Device.RuntimePlatform;
             myConnection.deviceId = DependencyService.Get<IDeviceUtils>().GetDeviceId();
@@ -34,19 +34,18 @@ namespace ExelonApp
 
             //TODO Create util class
             //TODO Create error handler 
-            string jsonResult = RESTClient.Post(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
+            string jsonResult = RESTClient.Put(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
 
             JObject rss = JObject.Parse(jsonResult);
 
-            string error = (string)rss["error"];
+            bool result = (bool)rss["result"];
 
-            if (error.Equals("true"))
+            if (!result)
             {
                 string errorMessage = (string)rss["errorMessage"];
-            }
-            else
+            } else
             {
-                App.userID = exelonID;
+                App.userID = exelonId;
                 await Navigation.PushAsync(new HomePage());
                 Navigation.RemovePage(Navigation.NavigationStack[0]);
             }
@@ -55,6 +54,17 @@ namespace ExelonApp
         private async void SwitchToSignUp_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignUp());
+        }
+
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(ExelonID.Text) || string.IsNullOrWhiteSpace(Password.Text))
+            {
+                SubmitButton.IsEnabled = false;
+            } else
+            {
+                SubmitButton.IsEnabled = true;
+            }
         }
     }
 }
