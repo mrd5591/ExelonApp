@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Content;
 using Android.OS;
 using WindowsAzure.Messaging.NotificationHubs;
+using Firebase;
 
 namespace ExelonApp.Droid
 {
@@ -20,14 +21,17 @@ namespace ExelonApp.Droid
 
             base.OnCreate(savedInstanceState);
 
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            FirebaseApp.InitializeApp(Application.Context);
+
             // Listen for push notifications
             NotificationHub.SetListener(new AzureListener());
 
             // Start the SDK
-            NotificationHub.Start(this.Application, "ExelonApp", "Endpoint=sb://psuexelon.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=k/5GsPQ+ROsduyxys0GPSUp1sbSduK2Ph2pdg85q8oU=");
+            NotificationHub.Start(this.Application, "ExelonHub", "Endpoint=sb://psuexelon.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=/+jGTe5KMk1+io4/mG/Ft/gp+kLIv68AO559mFI0Hec=");
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.exelonapp" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="28" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
-  <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.exeloncorp" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="29" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 	<application android:label="ExelonApp.Android" android:usesCleartextTraffic="true" android:theme="@style/MainTheme"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>
