@@ -27,6 +27,8 @@ namespace ExelonApp
             LogInInfo myConnection = new LogInInfo();
             myConnection.exelonID = exelonID;
             myConnection.password = password;
+            myConnection.os = Device.RuntimePlatform;
+            myConnection.deviceId = DependencyService.Get<IDeviceUtils>().GetDeviceId();
 
             string jsonString = JsonConvert.SerializeObject(myConnection);
 
