@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace ExelonApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -68,5 +69,33 @@ namespace ExelonApp
         {
             await Navigation.PushAsync(new SignUp());
         }
+
+        [assembly: Xamarin.Forms.Dependency(typeof(AndroidDevice))]
+        string id = string.Empty;
+        public string Id
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(id))
+                    return id;
+
+                id = android.OS.Build.Serial;
+                if (string.IsNullOrWhiteSpace(id) || id == Build.Unknown || id == "0")
+                {
+                    try
+                    {
+                        var context = Android.App.Application.Context;
+                        id = Secure.GetString(context.ContentResolver, Secure.AndroidId);
+                    }
+                    catch (Exception ex)
+                    {
+                        Android.Util.Log.Warn("DeviceInfo", "Unable to get id: " + ex.ToString());
+                    }
+                }
+
+                return id;
+            }
+        }
+
     }
 }
