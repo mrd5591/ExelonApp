@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "38315973042",
+    "project_id": "exelonapp",
+    "storage_bucket": "exelonapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38315973042:android:a1c8afb278e19c777cecab",
+        "android_client_info": {
+          "package_name": "com.exeloncorp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38315973042-tf119g1dphmqfjqadkevt7o77sl6nt44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8BViFDuyImYlsfzindHVwIflhDmGOXiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38315973042-tf119g1dphmqfjqadkevt7o77sl6nt44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

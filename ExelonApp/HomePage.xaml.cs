@@ -23,6 +23,14 @@ namespace ExelonApp
         private async void LogOutButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LogInPage());
+            Navigation.RemovePage(Navigation.NavigationStack[0]);
+        }
+       private async void RefreshButtonClicked(object sender, EventArgs args)
+        {
+            //TODO Call the server rather than creating a new home page
+            await Navigation.PushAsync(new HomePage());
+            Navigation.RemovePage(Navigation.NavigationStack[0]);
+
         }
     }
 }

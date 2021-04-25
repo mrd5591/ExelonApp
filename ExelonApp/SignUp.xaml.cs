@@ -69,16 +69,15 @@ namespace ExelonApp
 
                 JObject rss = JObject.Parse(jsonResult);
 
-                string error = (string)rss["error"];
+                bool result = (bool)rss["result"];
 
-                if (error.Equals("true"))
+                if (!result)
                 {
                     string errorMessage = (string)rss["errorMessage"];
-                }
-
-                else
+                } else
                 {
                     await Navigation.PushAsync(new LogInPage());
+                    Navigation.RemovePage(Navigation.NavigationStack[0]);
                 }
             }
             

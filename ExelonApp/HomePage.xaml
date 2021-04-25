@@ -12,14 +12,15 @@
                     VerticalOptions="End"/>
             <Button x:Name="Refresh"
                     BackgroundColor="NavajoWhite"
-                    Text="Refresh" 
+                    Text="Refresh"
+                    Clicked="RefreshButtonClicked"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"/>
             <ListView x:Name="homepage">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding timestamp}"
-                                  Detail="{Binding message}" />
+                        <TextCell Text="{Binding message}"
+                                  Detail="{Binding timestamp}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
