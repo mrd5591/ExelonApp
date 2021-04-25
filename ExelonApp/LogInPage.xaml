@@ -34,7 +34,5 @@
                 Clicked="SwitchToSignUp_Clicked"
                 HorizontalOptions="End"
                 VerticalOptions="End"/>
-        <Image Source="/ExelonApp/ExelonApp.Android/Resources/Images/g54970g93u46.jpg">
-        </Image>
     </Grid>
 </ContentPage>
