@@ -10,5 +10,6 @@ namespace ExelonApp
         public string password{ get; set; }
         public string deviceId { get; set; }
         public string os { get; set; }
+        public string pnsToken { get; set; }
     }
 }

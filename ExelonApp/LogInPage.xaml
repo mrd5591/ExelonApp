@@ -34,5 +34,8 @@
                 Clicked="SwitchToSignUp_Clicked"
                 HorizontalOptions="End"
                 VerticalOptions="End"/>
+        <Label  Text=""
+                TextColor="Red"
+                BindingContext="{Binding errorMessage}"/>
     </Grid>
 </ContentPage>
