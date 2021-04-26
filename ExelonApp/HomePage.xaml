@@ -16,7 +16,8 @@
                     Clicked="RefreshButtonClicked"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"/>
-            <ListView x:Name="homepage">
+            <ListView x:Name="HistoryListView"
+                      ItemsSource="NotificationHistory">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding message}"

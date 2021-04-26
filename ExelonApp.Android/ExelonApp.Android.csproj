@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="AndroidDeviceUtils.cs" />
     <Compile Include="AzureListener.cs" />
+    <Compile Include="CustomInstallationAdapter.cs" />
     <Compile Include="FirebaseSuccessListener.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -134,9 +135,6 @@
       <Project>{DF1F1E76-607C-4085-928D-AECF8838E70E}</Project>
       <Name>ExelonApp</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Images\g54970g93u46.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

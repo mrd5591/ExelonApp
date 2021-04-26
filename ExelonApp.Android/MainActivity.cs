@@ -31,7 +31,7 @@ namespace ExelonApp.Droid
             NotificationHub.SetListener(new AzureListener());
 
             // Start the SDK
-            NotificationHub.Start(this.Application, "ExelonHub", "Endpoint=sb://psuexelon.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=/+jGTe5KMk1+io4/mG/Ft/gp+kLIv68AO559mFI0Hec=");
+            NotificationHub.Start(this.Application, new CustomInstallationAdapter());
 
             FirebaseMessaging.Instance.GetToken().AddOnSuccessListener(this, new FirebaseSuccessListener());
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExelonApp.Util;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +14,14 @@ namespace ExelonApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        HomepageModel hm;
+        public List<Notification> NotificationHistory { get; set; }
         public HomePage()
         {
             InitializeComponent();
-            hm = new HomepageModel();
-            homepage.ItemsSource = hm.Histories;
+
+            GetHistory();
+
+            BindingContext = this;
         }
         //Button
         private async void LogOutButton_Clicked(object sender, EventArgs e)
@@ -25,12 +29,14 @@ namespace ExelonApp
             await Navigation.PushAsync(new LogInPage());
             Navigation.RemovePage(Navigation.NavigationStack[0]);
         }
-       private async void RefreshButtonClicked(object sender, EventArgs args)
-        {
-            //TODO Call the server rather than creating a new home page
-            await Navigation.PushAsync(new HomePage());
-            Navigation.RemovePage(Navigation.NavigationStack[0]);
+       private void RefreshButtonClicked(object sender, EventArgs args)
+       {
+            GetHistory();
+       }
 
+        private void GetHistory()
+        {
+            NotificationHistory = JsonConvert.DeserializeObject<List<Notification>>(RESTClient.Get(new Uri(App.url.ToString() + "/history/" + App.userID)));
         }
     }
 }

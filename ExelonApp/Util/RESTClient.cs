@@ -24,5 +24,16 @@ namespace ExelonApp.Util
             string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
             return jsonResult;
         }
+
+        public static string Get(Uri url)
+        {
+            string jsonResult = client.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
+            return jsonResult;
+        }
+
+        public static void SetBearerToken(string token)
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        }
     }
 }
