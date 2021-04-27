@@ -41,7 +41,7 @@ namespace ExelonApp
 
             //TODO Create util class
             //TODO Create error handler 
-            string jsonResult = RESTClient.Put(new Uri("http://10.0.2.2:8080/authenticate"), jsonString);
+            string jsonResult = RESTClient.Put(new Uri("http://71.175.40.192:2456/authenticate"), jsonString);
 
             try
             {

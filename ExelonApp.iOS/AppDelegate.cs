@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using WindowsAzure.Messaging.NotificationHubs;
+using UserNotifications;
 using Foundation;
 using UIKit;
 
@@ -23,9 +21,23 @@ namespace ExelonApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            // Set the Message listener
+            MSNotificationHub.SetDelegate(new AzureNotificationHubListener());
+
+            // Start the SDK
+            MSNotificationHub.Start(new CustomInstallationManagementDelegate());
+
+            app.RegisterForRemoteNotifications();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        {
+            iOSDeviceUtils.pnsToken = deviceToken.ToString();
         }
     }
 }

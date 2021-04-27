@@ -6,11 +6,12 @@ namespace ExelonApp.iOS
 {
     class iOSDeviceUtils : IDeviceUtils
     {
+        public static string pnsToken = "";
         public string GetDeviceId() => UIDevice.CurrentDevice.IdentifierForVendor.ToString();
 
         public string GetPNSToken()
         {
-            throw new System.NotImplementedException();
+            return pnsToken;
         }
     }
 }

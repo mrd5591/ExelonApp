@@ -8,7 +8,7 @@ namespace ExelonApp
     {
         public static string userID { get; set; }
         // TODO Set this to the MacMini IP address
-        public static Uri url = new Uri("http://10.0.2.2:8080");
+        public static Uri url = new Uri("http://71.175.40.192:2456");
         public App()
         {
             InitializeComponent();
