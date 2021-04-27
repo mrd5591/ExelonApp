@@ -17,7 +17,7 @@
                     HorizontalOptions="Start"
                     VerticalOptions="Start"/>
             <ListView x:Name="HistoryListView"
-                      ItemsSource="NotificationHistory">
+                      ItemsSource="{Binding NotificationHistory}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding message}"

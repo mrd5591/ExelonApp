@@ -7,5 +7,10 @@ namespace ExelonApp.iOS
     class iOSDeviceUtils : IDeviceUtils
     {
         public string GetDeviceId() => UIDevice.CurrentDevice.IdentifierForVendor.ToString();
+
+        public string GetPNSToken()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
