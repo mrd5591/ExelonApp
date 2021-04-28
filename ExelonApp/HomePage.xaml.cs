@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Flurl;
+using Newtonsoft.Json.Linq;
+using TinyAccountManager.Abstraction;
 
 namespace ExelonApp
 {
@@ -34,9 +37,25 @@ namespace ExelonApp
             GetHistory();
        }
 
-        private void GetHistory()
+        private async void GetHistory()
         {
-            NotificationHistory = JsonConvert.DeserializeObject<List<Notification>>(RESTClient.Get(new Uri(App.url.ToString() + "/history/" + App.userID)));
+            string jsonResult = RESTClient.Get(new Uri(App.url.AppendPathSegments(new object[] { "history", App.userID })));
+
+            JObject rss = JObject.Parse(jsonResult);
+
+            bool result = (bool)rss["result"];
+
+            if(result)
+            {
+                NotificationHistory = rss["resultSet"].ToObject<List<Notification>>();
+            } else
+            {
+                App.account.Properties.Remove("ExelonAppBearerToken");
+                await AccountManager.Current.Save(App.account);
+
+                await Navigation.PushAsync(new LogInPage());
+                Navigation.RemovePage(this);
+            }
         }
     }
 }

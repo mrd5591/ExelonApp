@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ExelonApp.Util;
-
+using Flurl;
+using TinyAccountManager.Abstraction;
 
 namespace ExelonApp
 {
@@ -20,6 +17,8 @@ namespace ExelonApp
         public LogInPage()
         {
             InitializeComponent();
+
+            BindingContext = this;
         }
         private async void SubmitButton_Clicked(object sender, EventArgs args)
         {
@@ -39,12 +38,10 @@ namespace ExelonApp
 
             string jsonString = JsonConvert.SerializeObject(myConnection);
 
-            //TODO Create util class
-            //TODO Create error handler 
-            string jsonResult = RESTClient.Put(new Uri("http://71.175.40.192:2456/authenticate"), jsonString);
-
             try
             {
+                string jsonResult = RESTClient.Put(new Uri(App.url.AppendPathSegment("authenticate")), jsonString);
+
                 JObject rss = JObject.Parse(jsonResult);
 
                 bool result = (bool)rss["result"];
@@ -57,8 +54,19 @@ namespace ExelonApp
                 else
                 {
                     App.userID = exelonId;
+                    App.bearerToken = (string)rss["token"];
+
+                    if (!App.account.Properties.ContainsKey("ExelonAppBearerToken"))
+                        App.account.Properties.Add("ExelonAppBearerToken", App.bearerToken);
+                    else
+                        App.account.Properties["ExelonAppBearerToken"] = App.bearerToken;
+
+                    await AccountManager.Current.Save(App.account);
+
+                    RESTClient.SetBearerToken(App.bearerToken);
+
                     await Navigation.PushAsync(new HomePage());
-                    Navigation.RemovePage(Navigation.NavigationStack[0]);
+                    Navigation.RemovePage(this);
                 }
             } catch(JsonReaderException e)
             {
@@ -82,7 +90,5 @@ namespace ExelonApp
                 SubmitButton.IsEnabled = true;
             }
         }
-
-
     }
 }

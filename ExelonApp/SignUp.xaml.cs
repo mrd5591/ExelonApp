@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using Flurl;
 
 namespace ExelonApp
 {
@@ -65,7 +61,7 @@ namespace ExelonApp
 
                 string jsonString = JsonConvert.SerializeObject(myConnection);
 
-                string jsonResult = Post(new Uri("http://71.175.40.192:2456/authenticate"), jsonString);
+                string jsonResult = Post(new Uri(App.url.AppendPathSegment("authenticate")), jsonString);
 
                 JObject rss = JObject.Parse(jsonResult);
 
@@ -80,38 +76,6 @@ namespace ExelonApp
                     Navigation.RemovePage(Navigation.NavigationStack[0]);
                 }
             }
-            
-
-            //string constr = "server=exelon.database.windows.net; uid=YCadmin; password=cky5103@; initial catalog=TestingDB";
-
-            //using (SqlConnection myConnection = new SqlConnection(constr))
-            //{
-            //    string oString = "Select * from User where exelonID=@exelonID";
-            //    SqlCommand oCmd = new SqlCommand(oString, myConnection);
-            //    oCmd.Parameters.AddWithValue("@exelonID", exelonID);
-            //    myConnection.Open();
-            //    using (SqlDataReader oReader = oCmd.ExecuteReader())
-            //    {
-            //        if (oReader.Read())
-            //        {
-            //            checkID.IsVisible = true;
-            //        }
-            //        else
-            //        {
-            //            string newString = "Insert into User (firstName, lastName, exelonID, backUpEmail, password) " +
-            //                "Values (@firstName, @lastName, @exelonID, @backUpEmail, @password)";
-            //            SqlCommand newCmd = new SqlCommand(newString, myConnection);
-            //            newCmd.Parameters.AddWithValue("@firstName", firstName);
-            //            newCmd.Parameters.AddWithValue("@lastName", lastName);
-            //            newCmd.Parameters.AddWithValue("@exelonID", exelonID);
-            //            newCmd.Parameters.AddWithValue("@backUpEmail", backUpEmail);
-            //            newCmd.Parameters.AddWithValue("@password", password);
-            //            newCmd.ExecuteNonQuery();
-            //        }
-
-            //        myConnection.Close();
-            //}
-
         }
 
         public static string Post(Uri url, string json)

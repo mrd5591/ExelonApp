@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="AzureNotificationHubListener.cs" />
     <Compile Include="CustomInstallationManagementDelegate.cs" />
+    <Compile Include="iOSAccountManager.cs" />
     <Compile Include="iOSDeviceUtils.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

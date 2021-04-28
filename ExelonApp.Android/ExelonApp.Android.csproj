@@ -95,6 +95,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndroidAccountManager.cs" />
     <Compile Include="AndroidDeviceUtils.cs" />
     <Compile Include="AzureListener.cs" />
     <Compile Include="CustomInstallationAdapter.cs" />
