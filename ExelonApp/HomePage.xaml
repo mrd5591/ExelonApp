@@ -4,9 +4,9 @@
              x:Class="ExelonApp.HomePage">
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="10">
-            <Image Source="Image1.jpg"
+            <!--<Image Source="Image1.jpg"
                    VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"/>
+                   HorizontalOptions="FillAndExpand"/>-->
             <Label Text="Notification History" FontSize="34" />
             <Button x:Name="LogOutButton"
                     Text="Log Out"
