@@ -9,6 +9,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Image Source="Image1.jpg"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"/>
         <Entry x:Name="ExelonID"
                Grid.Row ="1"
                Placeholder="ExelonID"
@@ -30,7 +33,7 @@
                 Clicked="SubmitButton_Clicked"
                 IsEnabled="False"/>
         <Button x:Name="SwitchToSignUp"
-                Text="Have nor registered? Sign up here."
+                Text="Have not registered? Sign up here."
                 Clicked="SwitchToSignUp_Clicked"
                 HorizontalOptions="End"
                 VerticalOptions="End"/>
