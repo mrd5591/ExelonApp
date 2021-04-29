@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ExelonApp.SignUp">
+             x:Class="ExelonApp.SignUp"
+             BackgroundImageSource="image1.jpg">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height ="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -13,22 +14,28 @@
                Grid.Row="0"
                Placeholder ="First Name"
                HorizontalOptions ="Fill"
-               VerticalOptions = "CenterAndExpand"/>
+               BackgroundColor="White"
+               Opacity="0.75"
+               HorizontalTextAlignment="Center"/>
         <Entry x:Name ="LastName"
                Grid.Row="1"
                Placeholder = "Last Name"
                HorizontalOptions="Fill"
-               VerticalOptions="CenterAndExpand"/>
+               BackgroundColor="White"
+               Opacity="0.75"
+               HorizontalTextAlignment="Center"/>
         <Label x:Name ="checkID"
                Grid.Row ="2" 
                Text ="This ID has been registered."
                HorizontalOptions ="CenterAndExpand"
-               VerticalOptions = "CenterAndExpand"
                IsVisible="false"/>
         <Entry x:Name="ExelonID"
                Grid.Row="2"
                Placeholder="Enter your Exelon ID"
-               HorizontalOptions="Fill"/>
+               HorizontalOptions="Fill"
+               BackgroundColor="White"
+               Opacity="0.75"
+               HorizontalTextAlignment="Center"/>
         <Label x:Name="validEmail"
                Grid.Row="3"
                Text="This is not a valid email address."
@@ -38,12 +45,18 @@
         <Entry x:Name="BackUpEmail"
                Grid.Row="3"
                Placeholder="Enter your preferred back up email"
-               HorizontalOptions="Fill"/>
+               HorizontalOptions="Fill"
+               BackgroundColor="White"
+               Opacity="0.75"
+               HorizontalTextAlignment="Center"/>
         <Entry x:Name="Password"
                Grid.Row="4"
                Placeholder="Enter your password"
                IsPassword="True"
-               HorizontalOptions="Fill"/>
+               HorizontalOptions="Fill"
+               BackgroundColor="White"
+               Opacity="0.75"
+               HorizontalTextAlignment="Center"/>
         <Label x:Name="validPassword"
                Grid.Row="4"
                Text="This is not a valid password"
@@ -54,7 +67,10 @@
                Grid.Row="5"
                Placeholder="Enter your password again"
                IsPassword="True"
-               HorizontalOptions="Fill"/>
+               HorizontalOptions="Fill"
+               BackgroundColor="White"
+               Opacity="0.75"
+               HorizontalTextAlignment="Center"/>
         <Label x:Name="identicalPassword"
                Grid.Row="5"
                Text="Password entries are not matching each other"
@@ -67,9 +83,10 @@
                 HorizontalOptions="CenterAndExpand"
                 Clicked="SubmitButton_Clicked"/>
         <Button x:Name="SwitchToSignIn"
+                Grid.Row="7"
                 Text="Already have an account? Sign in here."
                 Clicked="SwitchToSignIn_Clicked"
-                HorizontalOptions="End"
+                HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"/>
 
 
