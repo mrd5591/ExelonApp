@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using Flurl;
+using TinyAccountManager.Abstraction;
+using ExelonApp.Util;
 
 namespace ExelonApp
 {
@@ -61,7 +63,7 @@ namespace ExelonApp
 
                 string jsonString = JsonConvert.SerializeObject(myConnection);
 
-                string jsonResult = Post(new Uri(App.url.AppendPathSegment("authenticate")), jsonString);
+                string jsonResult = RESTClient.Post(new Uri(App.url.AppendPathSegment("authenticate")), jsonString);
 
                 JObject rss = JObject.Parse(jsonResult);
 
@@ -72,28 +74,26 @@ namespace ExelonApp
                     string errorMessage = (string)rss["errorMessage"];
                 } else
                 {
-                    await Navigation.PushAsync(new LogInPage());
-                    Navigation.RemovePage(Navigation.NavigationStack[0]);
+                    App.userID = exelonID;
+                    App.bearerToken = (string)rss["token"];
+
+                    if (!App.account.Properties.ContainsKey("ExelonAppBearerToken"))
+                        App.account.Properties.Add("ExelonAppBearerToken", App.bearerToken);
+                    else
+                        App.account.Properties["ExelonAppBearerToken"] = App.bearerToken;
+
+                    if (!App.account.Properties.ContainsKey("ExelonAppUserID"))
+                        App.account.Properties.Add("ExelonAppUserID", App.userID);
+                    else
+                        App.account.Properties["ExelonAppUserID"] = App.userID;
+
+                    await AccountManager.Current.Save(App.account);
+
+                    RESTClient.SetBearerToken(App.bearerToken);
+                    await Navigation.PushAsync(new HomePage());
+                    Navigation.RemovePage(this);
                 }
             }
-        }
-
-        public static string Post(Uri url, string json)
-        {
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-
-            string jsonResult = client.PostAsync(url, content).Result.Content.ReadAsStringAsync().Result;
-            return jsonResult;
-        }
-
-        public static string Put(Uri url, string json)
-        {
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpClient client = new HttpClient();
-
-            string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
-            return jsonResult;
         }
 
         private async void SwitchToSignIn_Clicked(object sender, EventArgs e)

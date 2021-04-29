@@ -30,7 +30,7 @@ namespace ExelonApp
         private async void LogOutButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LogInPage());
-            Navigation.RemovePage(Navigation.NavigationStack[0]);
+            Navigation.RemovePage(this);
         }
        private void RefreshButtonClicked(object sender, EventArgs args)
        {

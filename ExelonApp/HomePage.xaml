@@ -24,7 +24,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding message}"
-                                  Detail="{Binding timestamp}" />
+                                  Detail="{Binding timestamp}" 
+                                  IsEnabled="False"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

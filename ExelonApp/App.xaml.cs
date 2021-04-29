@@ -29,12 +29,15 @@ namespace ExelonApp
             {
                 account = await AccountManager.Current.Get("ExelonAppAccountManager");
                 bool hasToken = account.Properties.TryGetValue("ExelonAppBearerToken", out string token);
-                if (hasToken && token != null)
+                bool hasId = account.Properties.TryGetValue("ExelonAppUserID", out string id);
+                if (hasToken && hasId && token != null && id != null)
                 {
                     bearerToken = token;
+                    userID = id;
                 } else
                 {
                     bearerToken = null;
+                    userID = null;
                 }
             } else
             {
@@ -44,6 +47,7 @@ namespace ExelonApp
                 };
 
                 bearerToken = null;
+                userID = null;
             }
         }
         
@@ -51,7 +55,7 @@ namespace ExelonApp
         {
             GetToken();
 
-            if(bearerToken != null)
+            if(bearerToken != null && userID != null)
             {
                 RESTClient.SetBearerToken(bearerToken);
                 MainPage = new NavigationPage(new HomePage());
