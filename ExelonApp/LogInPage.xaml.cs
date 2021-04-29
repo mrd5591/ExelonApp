@@ -61,6 +61,11 @@ namespace ExelonApp
                     else
                         App.account.Properties["ExelonAppBearerToken"] = App.bearerToken;
 
+                    if (!App.account.Properties.ContainsKey("ExelonAppUserID"))
+                        App.account.Properties.Add("ExelonAppUserID", App.userID);
+                    else
+                        App.account.Properties["ExelonAppUserID"] = App.userID;
+
                     await AccountManager.Current.Save(App.account);
 
                     RESTClient.SetBearerToken(App.bearerToken);
