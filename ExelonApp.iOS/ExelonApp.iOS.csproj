@@ -122,6 +122,8 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\image1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\image1.imageset\image1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -144,5 +146,8 @@
       <Project>{43B482FA-AFD6-4778-A26D-1B984F066625}</Project>
       <Name>ExelonApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\image1.imageset\" />
   </ItemGroup>
 </Project>

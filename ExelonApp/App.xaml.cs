@@ -9,8 +9,8 @@ namespace ExelonApp
     {
         public static string userID { get; set; }
         public static string bearerToken { get; set; }
-        // TODO Set this to the MacMini IP address
-        public static Uri url = new Uri("http://10.0.2.2:8080");
+        // TODO Set this to the Java server address
+        public static Uri url = new Uri("http://71.175.40.192:2456");
         private static Util.IAccountManager accountManager;
         public static Account account;
         public App()
@@ -43,7 +43,9 @@ namespace ExelonApp
             {
                 account = new Account()
                 {
-                    ServiceId = "ExelonAppAccountManager"
+                    ServiceId = "ExelonAppAccountManager",
+                    Username = "user1"
+                    
                 };
 
                 bearerToken = null;
@@ -53,6 +55,7 @@ namespace ExelonApp
         
         protected override void OnStart()
         {
+            //AccountManager.Current.Remove("ExelonAppAccountManager");
             GetToken();
 
             if(bearerToken != null && userID != null)
