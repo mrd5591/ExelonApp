@@ -13,12 +13,9 @@ namespace ExelonApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        public string errorMessage { get; set; }
         public LogInPage()
         {
             InitializeComponent();
-
-            BindingContext = this;
         }
         private async void SubmitButton_Clicked(object sender, EventArgs args)
         {
@@ -48,7 +45,7 @@ namespace ExelonApp
 
                 if (!result)
                 {
-                    errorMessage = (string)rss["errorMessage"];
+                    ErrorMessage.Text = (string)rss["errorMessage"];
                     SubmitButton.IsEnabled = true;
                 }
                 else
@@ -75,18 +72,19 @@ namespace ExelonApp
                 }
             } catch(JsonReaderException e)
             {
-                errorMessage = "An unexpected server error has occured. Please try again.";
+                ErrorMessage.Text = "An unexpected server error has occured. Please try again.";
             }
         }
 
         private async void SwitchToSignUp_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignUp());
+            Navigation.RemovePage(this);
         }
 
         private void TextChanged(object sender, TextChangedEventArgs e)
         {
-            errorMessage = "";
+            ErrorMessage.Text = "";
             if (string.IsNullOrWhiteSpace(ExelonID.Text) || string.IsNullOrWhiteSpace(Password.Text))
             {
                 SubmitButton.IsEnabled = false;

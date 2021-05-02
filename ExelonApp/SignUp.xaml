@@ -18,7 +18,8 @@
                BackgroundColor="White"
                Opacity="0.75"
                HorizontalTextAlignment="Center"
-               PlaceholderColor="Black"/>
+               PlaceholderColor="Black"
+               TextChanged="TextChanged"/>
         <Entry x:Name ="LastName"
                Grid.Row="1"
                Placeholder = "Last Name"
@@ -26,12 +27,8 @@
                BackgroundColor="White"
                Opacity="0.75"
                HorizontalTextAlignment="Center"
-               PlaceholderColor="Black"/>
-        <Label x:Name ="checkID"
-               Grid.Row ="2" 
-               Text ="This ID has been registered."
-               HorizontalOptions ="CenterAndExpand"
-               IsVisible="false"/>
+               PlaceholderColor="Black"
+               TextChanged="TextChanged"/>
         <Entry x:Name="ExelonID"
                Grid.Row="2"
                Placeholder="Enter your Exelon ID"
@@ -39,13 +36,8 @@
                BackgroundColor="White"
                Opacity="0.75"
                HorizontalTextAlignment="Center"
-               PlaceholderColor="Black"/>
-        <Label x:Name="validEmail"
-               Grid.Row="3"
-               Text="This is not a valid email address."
-               HorizontalOptions="CenterAndExpand"
-               TextColor="Red"
-               IsVisible="false"/>
+               PlaceholderColor="Black"
+               TextChanged="TextChanged"/>
         <Entry x:Name="BackUpEmail"
                Grid.Row="3"
                Placeholder="Enter your preferred back up email"
@@ -53,7 +45,8 @@
                BackgroundColor="White"
                Opacity="0.75"
                HorizontalTextAlignment="Center"
-               PlaceholderColor="Black"/>
+               PlaceholderColor="Black"
+               TextChanged="TextChanged"/>
         <Entry x:Name="Password"
                Grid.Row="4"
                Placeholder="Enter your password"
@@ -62,13 +55,8 @@
                BackgroundColor="White"
                Opacity="0.75"
                HorizontalTextAlignment="Center"
-               PlaceholderColor="Black"/>
-        <Label x:Name="validPassword"
-               Grid.Row="4"
-               Text="This is not a valid password"
-               HorizontalOptions="CenterAndExpand"
-               TextColor="Red"
-               IsVisible="false"/>
+               PlaceholderColor="Black"
+               TextChanged="TextChanged"/>
         <Entry x:Name="ConfirmPassword"
                Grid.Row="5"
                Placeholder="Enter your password again"
@@ -77,26 +65,26 @@
                BackgroundColor="White"
                Opacity="0.75"
                HorizontalTextAlignment="Center"
-               PlaceholderColor="Black"/>
-        <Label x:Name="identicalPassword"
-               Grid.Row="5"
-               Text="Password entries are not matching each other"
-               HorizontalOptions="CenterAndExpand"
-               TextColor="Red"
-               IsVisible="false"/>
+               PlaceholderColor="Black"
+               TextChanged="TextChanged"/>
         <Button x:Name="SubmitButton"
                 Grid.Row="6"
                 Text="Sign UP"
                 HorizontalOptions="CenterAndExpand"
                 Clicked="SubmitButton_Clicked"/>
-        <Button x:Name="SwitchToSignIn"
+        <Label  x:Name="ErrorMessage"
                 Grid.Row="7"
+                IsVisible="False"
+                TextColor="DarkRed"
+                HorizontalOptions="CenterAndExpand"
+                Text =""
+                FontSize="Medium"/>
+        <Button x:Name="SwitchToSignIn"
+                Grid.Row="8"
                 Text="Already have an account? Sign in here."
                 Clicked="SwitchToSignIn_Clicked"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"/>
-
-
     </Grid>
 
 </ContentPage>

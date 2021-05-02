@@ -38,13 +38,16 @@
                 Clicked="SubmitButton_Clicked"
                 IsEnabled="False"/>
         <Button x:Name="SwitchToSignUp"
-                Grid.Row="4"
+                Grid.Row="5"
                 Text="Have not registered? Sign up here."
                 Clicked="SwitchToSignUp_Clicked"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End"/>
-        <Label  Text=""
-                TextColor="Red"
-                BindingContext="{Binding errorMessage}"/>
+        <Label  x:Name="ErrorMessage"
+                Grid.Row="4"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="False"
+                Text=""
+                TextColor="Red"/>
     </Grid>
 </ContentPage>
