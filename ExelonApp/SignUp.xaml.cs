@@ -36,7 +36,7 @@ namespace ExelonApp
             var containNumber = new Regex(@"[0-9]+");
             var containUpperCase = new Regex(@"[A-Z]+");
             var containLowerCase = new Regex(@"[a-z]+");
-            bool containsSpecial = Regex.IsMatch(password, @"(?i)^[a-z’'()/.!,\s-]+$");
+            bool containsSpecial = Regex.IsMatch(password, @"^[@$!%*?&]*");
             var minMaxChar = new Regex(@".{8,15}");
             var passwordFormat = startWithLetter && containsSpecial && containNumber.IsMatch(password) &&
                 containUpperCase.IsMatch(password) && containLowerCase.IsMatch(password) && minMaxChar.IsMatch(password);

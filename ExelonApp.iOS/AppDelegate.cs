@@ -2,6 +2,8 @@
 using UserNotifications;
 using Foundation;
 using UIKit;
+using System.Runtime.InteropServices;
+using System;
 
 namespace ExelonApp.iOS
 {
@@ -37,7 +39,9 @@ namespace ExelonApp.iOS
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            iOSDeviceUtils.pnsToken = deviceToken.ToString();
+            byte[] result = new byte[deviceToken.Length];
+            Marshal.Copy(deviceToken.Bytes, result, 0, (int)deviceToken.Length);
+            iOSDeviceUtils.pnsToken = BitConverter.ToString(result).Replace("-", "");
         }
     }
 }
