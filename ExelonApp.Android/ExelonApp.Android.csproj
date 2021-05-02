@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -131,7 +130,7 @@
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ExelonApp\ExelonApp.csproj">
-      <Project>{DF1F1E76-607C-4085-928D-AECF8838E70E}</Project>
+      <Project>{43B482FA-AFD6-4778-A26D-1B984F066625}</Project>
       <Name>ExelonApp</Name>
     </ProjectReference>
   </ItemGroup>
