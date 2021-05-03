@@ -32,10 +32,10 @@ namespace ExelonApp
             await Navigation.PushAsync(new LogInPage());
             Navigation.RemovePage(this);
         }
-       private void RefreshButtonClicked(object sender, EventArgs args)
-       {
+        private void RefreshButtonClicked(object sender, EventArgs args)
+        {
             GetHistory();
-       }
+        }
 
         private async void GetHistory()
         {
@@ -55,6 +55,20 @@ namespace ExelonApp
 
                 await Navigation.PushAsync(new LogInPage());
                 Navigation.RemovePage(this);
+            }
+        }
+
+        private async void ConfirmButton_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Confirmation", "Please confirm again.", "Confirm", "Cancel");
+            if (answer.Equals(true))
+            {
+                //string jsonResult = JsonConvert.SerializeObject(answer);
+                //Send the server the confirmation message.
+            }
+            else
+            {
+                //Remain the same
             }
         }
     }

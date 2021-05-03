@@ -9,9 +9,6 @@
              
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="10">
-            <Image Source="Image1.jpg"
-                   VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand"/>
             <Label Text="Notification History" FontSize="34" />
             <Button x:Name="LogOutButton"
                     Text="Log Out"
@@ -28,9 +25,20 @@
                       ItemsSource="{Binding NotificationHistory}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding message}"
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding message}"
+                                       TextColor="LightSalmon"/>
+                                <Label Text="{Binding timestamp}"/>
+                                <Button x:Name="ConfirmButton"
+                                        Text="Confirm"
+                                        Clicked="ConfirmButton_Clicked"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <!--<TextCell Text="{Binding message}"
                                   Detail="{Binding timestamp}" 
-                                  IsEnabled="False"/>
+                                  IsEnabled="False"/>-->
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
