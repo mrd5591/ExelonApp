@@ -63,12 +63,20 @@ namespace ExelonApp
             bool answer = await DisplayAlert("Confirmation", "Please confirm again.", "Confirm", "Cancel");
             if (answer.Equals(true))
             {
-                //string jsonResult = JsonConvert.SerializeObject(answer);
-                //Send the server the confirmation message.
-            }
-            else
-            {
-                //Remain the same
+                string response = RESTClient.Post(new Uri(App.url.AppendPathSegments("confirm", ((Notification)sender).notificationId)), null);
+
+                try
+                {
+                    JObject res = JObject.Parse(response);
+
+                    bool result = (bool)res["result"];
+
+                    if (result)
+                        GetHistory();
+                } catch(JsonReaderException e)
+                {
+
+                }
             }
         }
     }
