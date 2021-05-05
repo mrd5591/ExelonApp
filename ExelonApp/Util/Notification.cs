@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 
 namespace ExelonApp.Util
 {
-    public class Notification
+    public class Notification : BaseViewModel
     {
         private string ts;
         public string timestamp
@@ -20,6 +21,6 @@ namespace ExelonApp.Util
         }
         public string message { get; set; }
         public string notificationId { get; set; }
-        public string confirm { get; set; }
+        public bool confirm { get; set; }
     }
 }

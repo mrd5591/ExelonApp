@@ -11,16 +11,21 @@ using Xamarin.Forms.Xaml;
 using Flurl;
 using Newtonsoft.Json.Linq;
 using TinyAccountManager.Abstraction;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ExelonApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public List<Notification> NotificationHistory { get; set; }
+        public ObservableCollection<Notification> NotificationHistory { get; set; }
         public HomePage()
         {
             InitializeComponent();
+
+            NotificationHistory = new ObservableCollection<Notification>();
 
             GetHistory();
 
@@ -29,6 +34,12 @@ namespace ExelonApp
         //Button
         private async void LogOutButton_Clicked(object sender, EventArgs e)
         {
+            if (App.account.Properties.ContainsKey("ExelonAppBearerToken"))
+                App.account.Properties.Remove("ExelonAppBearerToken");
+
+            if (App.account.Properties.ContainsKey("ExelonAppUserID"))
+                App.account.Properties.Remove("ExelonAppUserID");
+
             await Navigation.PushAsync(new LogInPage());
             Navigation.RemovePage(this);
         }
@@ -47,7 +58,16 @@ namespace ExelonApp
 
             if(result)
             {
-                NotificationHistory = rss["resultSet"].ToObject<List<Notification>>();
+                NotificationHistory.Clear();
+                foreach(Notification notification in rss["resultSet"].ToObject<ObservableCollection<Notification>>().Where<Notification>(x => x.confirm).OrderByDescending(X => X.timestamp))
+                {
+                    NotificationHistory.Add(notification);
+                }
+                foreach(Notification notification in rss["resultSet"].ToObject<ObservableCollection<Notification>>().Where<Notification>(x => !x.confirm).OrderByDescending(X => X.timestamp))
+                {
+                    NotificationHistory.Add(notification);
+                }
+
             } else
             {
                 App.account.Properties.Remove("ExelonAppBearerToken");
@@ -60,10 +80,10 @@ namespace ExelonApp
 
         private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
-            bool answer = await DisplayAlert("Confirmation", "Please confirm again.", "Confirm", "Cancel");
+            bool answer = await DisplayAlert("Confirmation", "Are you sure you would like to confirm?", "Confirm", "Cancel");
             if (answer.Equals(true))
             {
-                string response = RESTClient.Post(new Uri(App.url.AppendPathSegments("confirm", ((Notification)sender).notificationId)), null);
+                string response = RESTClient.Post(new Uri(App.url.AppendPathSegments("confirm", ((Button)sender).CommandParameter)), null);
 
                 try
                 {
@@ -73,10 +93,25 @@ namespace ExelonApp
 
                     if (result)
                         GetHistory();
-                } catch(JsonReaderException e)
+                } catch(JsonReaderException ex)
                 {
 
                 }
+            }
+        }
+    }
+
+    public class BaseViewModel : INotifyPropertyChanged
+    {
+        #region Events
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        protected void RaisePropertyChange([CallerMemberName] string memberName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(memberName));
             }
         }
     }

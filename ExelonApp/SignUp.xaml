@@ -71,7 +71,10 @@
                 Grid.Row="6"
                 Text="Sign UP"
                 HorizontalOptions="CenterAndExpand"
-                Clicked="SubmitButton_Clicked"/>
+                Clicked="SubmitButton_Clicked"
+                BackgroundColor="LightSalmon"
+                TextColor="CornflowerBlue"
+                CornerRadius="16"/>
         <Label  x:Name="ErrorMessage"
                 Grid.Row="7"
                 IsVisible="False"
@@ -84,7 +87,10 @@
                 Text="Already have an account? Sign in here."
                 Clicked="SwitchToSignIn_Clicked"
                 HorizontalOptions="CenterAndExpand"
-                VerticalOptions="End"/>
+                VerticalOptions="End"
+                BackgroundColor="LightSalmon"
+                TextColor="CornflowerBlue"
+                CornerRadius="16"/>
     </Grid>
 
 </ContentPage>

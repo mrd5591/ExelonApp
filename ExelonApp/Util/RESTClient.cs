@@ -11,7 +11,7 @@ namespace ExelonApp.Util
 
         public static string Post(Uri url, string json)
         {
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var content = new StringContent(json != null ? json : "{}", Encoding.UTF8, "application/json");
 
             string jsonResult = client.PostAsync(url, content).Result.Content.ReadAsStringAsync().Result;
             return jsonResult;
@@ -19,7 +19,7 @@ namespace ExelonApp.Util
 
         public static string Put(Uri url, string json)
         {
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var content = new StringContent(json != null ? json : "{}", Encoding.UTF8, "application/json");
 
             string jsonResult = client.PutAsync(url, content).Result.Content.ReadAsStringAsync().Result;
             return jsonResult;

@@ -9,20 +9,27 @@
              
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="10">
-            <Label Text="Notification History" FontSize="34" />
+            <Label Text="Notification History" FontSize="34" TextColor="CornflowerBlue"/>
             <Button x:Name="LogOutButton"
                     Text="Log Out"
                     Clicked="LogOutButton_Clicked"
                     HorizontalOptions="End"
-                    VerticalOptions="End"/>
+                    VerticalOptions="End"
+                    BackgroundColor="LightSalmon"
+                    CornerRadius="16"
+                    TextColor="CornflowerBlue"/>
             <Button x:Name="Refresh"
-                    BackgroundColor="NavajoWhite"
+                    BackgroundColor="LightSalmon"
+                    CornerRadius="16"
                     Text="Refresh"
                     Clicked="RefreshButtonClicked"
                     HorizontalOptions="Start"
-                    VerticalOptions="Start"/>
+                    VerticalOptions="Start"
+                    TextColor="CornflowerBlue"/>
             <ListView x:Name="HistoryListView"
-                      ItemsSource="{Binding NotificationHistory}">
+                      ItemsSource="{Binding NotificationHistory}"
+                      HasUnevenRows="False"
+                      SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -32,13 +39,14 @@
                                 <Label Text="{Binding timestamp}"/>
                                 <Button x:Name="ConfirmButton"
                                         Text="Confirm"
-                                        Clicked="ConfirmButton_Clicked"/>
+                                        Clicked="ConfirmButton_Clicked"
+                                        IsVisible="{Binding confirm}"
+                                        CornerRadius="16"
+                                        BackgroundColor="LightSalmon"
+                                        TextColor="CornflowerBlue"
+                                        CommandParameter="{Binding notificationId}"/>
                             </StackLayout>
                         </ViewCell>
-                        <!--<TextCell Text="{Binding message}"
-                                  Detail="{Binding timestamp}" 
-                                  IsEnabled="False"/>-->
-                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
